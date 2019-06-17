@@ -106,15 +106,30 @@ class ProgressiveManager{
     this.bonus = 0
   }
   hire(Employee){
-    return this.reports.push(Employee)
+    this.reports.push(Employee)
+    return this.updated()
     
   }
   fire(index){
-    return this.reports.splice(index, 1)
+    this.reports.splice(index, 1)
+    return (this.bonus += 100)
   }
-  if(){
-    this.bonus += 100
+  updated() {
+    if(this.reports.length >= 101){
+      return this.title = 'Bestest Manager'
+    } else if(this.reports.length > 50){
+      return this.title = 'Manager Plus'
+    } else if(this.reports.length > 10){
+      return this.title = 'Manager'
+    } else if(this.reports.length > 3){
+      return this.title = 'Mostly Manager'
+    } else if(this.reports.length > 0){
+      return this.title = 'Barely Manager'
+    } else if(this.reports.length === 0){
+      return this.title = 'Not a manager'
+    }
   }
+
 } //Code Here
 
 
